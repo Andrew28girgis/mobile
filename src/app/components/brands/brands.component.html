@@ -1,0 +1,32 @@
+<div id="services" class="our-services section" style="padding:60px 0;">
+  <!-- <div class="services-right-dec">
+    <img src="assets/images/services-right-dec.png" alt="">
+  </div> -->
+  <div class="container">
+    <!-- <div class="services-left-dec">
+      <img src="assets/images/services-left-dec.png" alt="">
+    </div> -->
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading">
+          <h2>Brands</h2>
+          <!-- <span>Our Services</span> -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+  <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let brand of GeneralBrands.brands">
+          <ng-template carouselSlide>
+            <div class="item" style="padding: 0; height: auto; box-shadow: none; cursor: pointer;" [routerLink]="['/mobiles' ,brand.id]" >
+              <!-- <h4>{{brand.name}}</h4> -->
+              <div class="icon">
+                  <img src="http://194.135.33.234:8090/brands/{{brand.name}}.png" alt="">
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
