@@ -25,8 +25,13 @@ export class MobileServices {
   public getworkingphones(brandid: number): Observable<any[]> {
     return this.http.get<any[]>(`${environment.api}/phones/getworkingphones?brandid=${brandid}`).pipe();
   }
-  
+
   public getphone(phoneid: number): Observable<any[]> {
     return this.http.get<any[]>(`${environment.api}/phones/getphone?phoneid=${phoneid}`).pipe();
+  }
+
+
+  public getbrands(): any {
+    return this.http.get<any>(`${environment.api}/phones/getbrandsenc`, {responseType: 'text' as 'json'}).pipe();
   }
 }

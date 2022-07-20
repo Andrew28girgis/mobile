@@ -6,6 +6,7 @@ import { Injectable } from "@angular/core";
 
 export class GeneralClients{
   clients:Clients[];
+  client:Clients;
 }
 
 export class Clients {

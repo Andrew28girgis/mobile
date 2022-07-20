@@ -5,15 +5,16 @@ import { GeneralBrands } from 'src/app/modals/brands';
 import { MobileServices } from 'src/app/services/mobile-services.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { GeneralPhones } from 'src/app/modals/phones';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
   styleUrls: ['./brands.component.css']
 })
+
 export class BrandsComponent implements OnInit {
   GeneralBrands: GeneralBrands = new GeneralBrands();
-
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -43,12 +44,16 @@ export class BrandsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getbrands();
+    // this.getbrandsx();
   }
   getbrands() {
     this.MobileServices.getworkingbrands().subscribe(data => {
       this.GeneralBrands.brands = data;
     })
   }
+  getbrandsx(){
+    this.MobileServices.getbrands().subscribe((data:any) => {
 
-
+    })
+  }
 }

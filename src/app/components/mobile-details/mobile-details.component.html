@@ -1,134 +1,264 @@
 <section class="single_product_details_area section_padding_0_100" style="margin-top: 140px;">
-    <div class="container">
-        <div class="row">
+  <div class="container">
+    <div class="row">
 
-            <div class="col-12 col-md-6">
-                <div class="single_product_thumb">
-                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+      <div class="col-12 col-md-6">
+        <div class="single_product_desc">
+          <h2 class="title">{{GeneralPhones?.phone?.title}}</h2>
+          <h6 class="price" style="font-weight: 300;margin-left: 2px; margin-bottom: 14px;">{{GeneralPhones?.phone?.storage }}</h6>
+          </div>
+        <div class="single_product_thumb">
+          <div id="product_details_slider" class="carousel slide" data-ride="carousel"
+            style="height: 400px; display: flex; flex-direction: column;">
 
-                        <ol class="carousel-indicators">
-                            <ng-container *ngFor="let photo of GeneralPhones.phone?.phonePhotoes ;let i =index">
-                                <li data-target="#product_details_slider" (click)="setActive(photo.id)"
-                                    [ngClass]="{'active': photo.isActive == true }" 
-                                    style="background-image: url({{photo.photo}});cursor: pointer;">
-                                </li>
-                            </ng-container>
+            <ol class="carousel-indicators">
+              <ng-container *ngFor="let photo of GeneralPhones.phone?.phonePhotoes ;let i =index">
+                <li data-target="#product_details_slider" (click)="setActive(photo.id)"
+                  [ngClass]="{'active': photo.isActive == true }"
+                  style="background-image: url({{photo.photo}});cursor: pointer;">
+                </li>
+              </ng-container>
+            </ol>
 
-
-                        </ol>
-
-                        <div class="carousel-inner" *ngIf="GeneralPhones?.phone?.phonePhotoes">
-                            <ng-container *ngFor="let photo of GeneralPhones.phone.phonePhotoes">
-                                <div class="carousel-item active" *ngIf="photo.isActive == true">
-                                    <a class="gallery_img" href="{{photo.photo}}">
-                                        <img class="d-block w-100" src="{{photo.photo}}">
-                                    </a>
-                                </div>
-                            </ng-container>
-
-
-                        </div>
-                    </div>
+            <div class="carousel-inner" *ngIf="GeneralPhones?.phone?.phonePhotoes">
+              <ng-container *ngFor="let photo of GeneralPhones.phone.phonePhotoes">
+                <div class="carousel-item active" *ngIf="photo.isActive == true">
+                  <img class="d-block" src="{{photo.photo}}" style="max-width: 350px; max-height:390px; margin: auto;">
                 </div>
+              </ng-container>
             </div>
-
-            <div class="col-12 col-md-6">
-                <div class="single_product_desc">
-
-                    <h4 class="title">{{GeneralPhones?.phone?.title}}</h4>
-
-                    <h4 class="price">$ 39.99</h4>
-
-                    <p class="available">Available: <span class="text-muted">In Stock</span></p>
-
-                    <div class="single_product_ratings mb-15">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                    </div>
-
-                    <!-- Add to Cart Form -->
-                    <form class="cart clearfix mb-50 d-flex" method="post">
-                        <div class="quantity">
-                            <span class="qty-minus"
-                                onclick="var effect = document.getElementById('qty'); var qty = effect.value; "><i
-                                    class="fa fa-minus" aria-hidden="true"></i></span>
-                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity"
-                                value="1">
-                            <span class="qty-plus"
-                                onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
-                                    class="fa fa-plus" aria-hidden="true"></i></span>
-                        </div>
-                        <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add to
-                            cart</button>
-                    </form>
-
-                    <div id="accordion" role="tablist">
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingOne">
-                                <h6 class="mb-0">
-                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
-                                        aria-controls="collapseOne">Information</a>
-                                </h6>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so
-                                        dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te
-                                        mpus. Ut consectetur lacus.</p>
-                                    <p>Approx length 66cm/26" (Based on a UK size 8 sample) Mixed fibres</p>
-                                    <p>The Model wears a UK size 8/ EU size 36/ US size 4 and her height is 5'8"</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingTwo">
-                                <h6 class="mb-0">
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo"
-                                        aria-expanded="false" aria-controls="collapseTwo">Cart Details</a>
-                                </h6>
-                            </div>
-                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in
-                                        veritatis officia inventore, tempore provident dignissimos nemo, nulla quaerat.
-                                        Quibusdam non, eos, voluptatem reprehenderit hic nam! Laboriosam, sapiente!
-                                        Praesentium.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magnam laborum
-                                        eaque.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingThree">
-                                <h6 class="mb-0">
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseThree"
-                                        aria-expanded="false" aria-controls="collapseThree">shipping &amp; Returns</a>
-                                </h6>
-                            </div>
-                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint
-                                        repudiandae suscipit ab soluta delectus voluptate, vero vitae, tempore maxime
-                                        rerum iste dolorem mollitia perferendis distinctio. Quibusdam laboriosam rerum
-                                        distinctio. Repudiandae fugit odit, sequi id!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae qui maxime
-                                        consequatur laudantium temporibus ad et. A optio inventore deleniti ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="single_product_desc">
+          <div class="padding-x-md padding-y-xl flex flex-center" style="    display: flex;
+          justify-content: space-between;">
+            <ng-container *ngFor="let size of PhoneSizes">
+            <div class="text-center">
+              <div class="margin-bottom-xs">
+                <button class="reset btn-gradient-1 " style="background-color: #fff;  padding: 3px;"  (click)="getColorsBySize(size);">{{size}}</button>
+              </div>
+
+            </div>
+
+          </ng-container>
+
+          </div>
+          <div class="padding-x-md padding-y-xl flex flex-center" style="    display: flex;
+          justify-content: space-between; margin-top: 12px;">
+          <ng-container *ngFor="let color of ColorsSize">
+            <div class="text-center">
+              <div class="margin-bottom-xs">
+                <button class="reset btn-gradient-1 " style="background-color: #fff;  padding: 3px;"  (click)="getPhonesByColorAndSize(color);">{{color}}</button>
+              </div>
+
+            </div>
+          </ng-container></div>
+
+          <div id="pricing" class="pricing-tables">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="item first-item" style="    padding: 25px 25px 20px 25px;">
+                  <!-- <h4>{{General.client?.title}}</h4> -->
+
+                  <img *ngIf="General.client?.title" style="    max-width: 150px;"
+                    src="http://194.135.33.234:8090/logos/{{General.client?.title}}.png" alt="">
+                  <div style="display: flex;     margin: 20px 0;">
+                    <div class="col-3" style="display: flex;align-items: center; ">
+                      <label class="container-checkbox">
+                        <img src="../../../assets/images/5valu.png" alt="">
+                        <input type="checkbox" disabled [checked]="General.client&&General.client.valu == '1'">
+                        <span [ngClass]="General.client&&General.client.valu == '1'?'checkmark':'checkxmark'"></span>
+                      </label>
+                    </div>
+
+
+                    <div class="col-3" style="display: flex;align-items: center;">
+                      <label class="container-checkbox">
+                        <div class="icon">
+                          <img src="../../../assets/images/3visa.png" alt="">
+
+                        </div>
+                        <input type="checkbox" disabled [checked]="General.client&&General.client.onlinePayment == '1'">
+                        <span
+                          [ngClass]="General.client&&General.client.onlinePayment == '1'?'checkmark':'checkxmark'"></span>
+                      </label>
+                    </div>
+
+                    <div class="col-3" style="display: flex;align-items: center; ">
+                      <label class="container-checkbox">
+                        <div class="icon">
+                          <img src="../../../assets/images/3cod.png" alt="">
+                        </div>
+                        <input type="checkbox" disabled
+                          [checked]="General.client&&General.client.cashOnDelivery == '1'">
+                        <span
+                          [ngClass]="General.client&&General.client.cashOnDelivery == '1'?'checkmark':'checkxmark'"></span>
+                      </label>
+                    </div>
+
+                    <div class="col-3" style="display: flex;align-items: center;">
+                      <label class="container-checkbox">
+                        <div class="icon">
+                          <img src="../../../assets/images/bankinstallments.png" alt="">
+                        </div>
+                        <input type="checkbox" disabled
+                          [checked]="General.client&&General.client.bankInstallments == '1'">
+                        <span
+                          [ngClass]="General.client&&General.client.bankInstallments == '1'?'checkmark':'checkxmark'"></span>
+                      </label>
+                    </div>
+                  </div>
+
+
+                  <div style="padding-top: 30px;border-top: 1px solid #eee;">
+                    <p style="font-size: 17px; font-weight: 600;color: #2a2a2a;">{{HomeProduct[0]?.title}}</p>
+                    <p *ngIf="winnerVariant" style="font-size: 15px;color: #7a7a7a;">
+                      {{winnerVariant.size}}
+                      <span *ngIf="winnerVariant&&winnerVariant.color"> , {{winnerVariant?.color}}</span>
+                    </p>
+                  </div>
+
+
+
+                  <span class="winner-price" style="    padding-block: 10px;
+                  border-bottom: 1px solid #ddd;">{{HomeProduct[0]?.price|number }}
+                    EGP</span>
+
+
+                  <div class="row" style="margin-top:30px">
+
+
+                    <div class="main-blue-button-hover">
+                      <a href="{{HomeProduct[0].link}}" target="_blank">View Deal</a>
+                    </div>
+                    <div style="margin-top: 10px;display: flex;justify-content: end;">
+
+                      <select style="    border: none;
+                      width: 100px; cursor: pointer;font-size: 14px;font-weight: 500;
+                      color: #323232;" (change)="routeTo($event)">
+                        <option class="cutomOption" hidden selected>{{AllPhones.length}} More </option>
+
+                        <option class="cutomOption" *ngFor="let price of AllPhones" value="{{price.link}}"> EGB
+                          {{price.price|number}}
+                          {{price.website}} </option>
+
+                      </select>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- <p class="available">Available: <span class="text-muted">In Stock</span></p> -->
+
+
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+
+        <ng-container *ngFor="let size of PhoneSizes">
+
+          <p style="margin: 15px;" (click)="getColorsBySize(size);">{{size}}</p>
+        </ng-container>
+
+        <ng-container *ngFor="let color of ColorsSize">
+
+          <p style="margin: 15px;" (click)="getPhonesByColorAndSize(color);">{{color}}</p>
+        </ng-container>
+
+        <ng-container *ngFor="let product of HomeProduct">
+          <p style="margin: 15px;">{{product.title}} <span style="color: red;">
+              {{product.price}}
+            </span> <span>{{product.website}}</span> </p>
+        </ng-container>
+
+
+        <div class="single_product_desc">
+          <div class="card-header" role="tab" id="headingTwo">
+            <div id="accordion" role="tablist">
+              <div class="card" style="margin-top:30px">
+                <div class="card-header" role="tab" id="headingOne">
+                  <h6 class="mb-0">
+                    <a style="color: #212529;" data-bs-toggle="collapse" href="#collapseOne" role="button"
+                      aria-expanded="false" aria-controls="collapseExample">DISPLAY</a>
+                  </h6>
+                </div>
+
+                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <p>Display size : {{GeneralPhones?.phone?.displaySize}} inches</p>
+                    <p>Resolution : {{GeneralPhones?.phone?.resolution}}</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" role="tab" id="headingTwo">
+                  <h6 class="mb-0">
+                    <a style="color: #212529;" data-bs-toggle="collapse" href="#MEMORY" role="button"
+                      aria-expanded="false" aria-controls="collapseExample">MEMORY</a>
+                  </h6>
+                </div>
+                <div id="MEMORY" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <p>Internal : {{GeneralPhones?.phone?.ram}}GB RAM</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" role="tab" id="headingTwo">
+                  <h6 class="mb-0">
+                    <a style="color: #212529;" data-bs-toggle="collapse" href="#Platform" role="button"
+                      aria-expanded="false" aria-controls="collapseExample">Platform</a>
+                  </h6>
+                </div>
+                <div id="Platform" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <p>OS : {{GeneralPhones?.phone?.os}}</p>
+                    <p>Chipset : {{GeneralPhones?.phone?.chipset}}</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="card">
+                <div class="card-header" role="tab" id="headingTwo">
+                  <h6 class="mb-0">
+                    <a style="color: #212529;" data-bs-toggle="collapse" href="#Battery" role="button"
+                      aria-expanded="false" aria-controls="collapseExample">Battery</a>
+                  </h6>
+                </div>
+                <div id="Battery" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <p>Type : {{GeneralPhones?.phone?.batteryType}}</p>
+                    <p>Size : {{GeneralPhones?.phone?.batterySize}}</p>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+
     </div>
+  </div>
 </section>
 
 
