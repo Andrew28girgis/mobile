@@ -51,7 +51,14 @@
           <ng-container *ngFor="let color of ColorsSize">
             <div class="text-center">
               <div class="margin-bottom-xs">
-                <button class="reset btn-gradient-1 " style="background-color: #fff;  padding: 3px;"  (click)="getPhonesByColorAndSize(color);">{{color}}</button>
+                <div style="width: 100px; height:50px ; display: flex ; justify-content: center;">
+                  <img src="../../../assets/images/iphone-finish-silver-2021.jpg" alt="" *ngIf="color=='Silver'" (click)="getPhonesByColorAndSize(color);">
+
+                 <img src="../../../assets/images/iphone-13-finish-green-202203.jpg" alt="" *ngIf="color=='Alpine Green'" (click)="getPhonesByColorAndSize(color);">
+                </div>
+                <button class="reset btn-gradient-1 " style="  padding: 3px;" [ngStyle]="color == 'Alpine Green' && {'background-color': '#005c4c'} || null"
+                 (click)="getPhonesByColorAndSize(color);">
+                  {{color}}</button>
               </div>
 
             </div>

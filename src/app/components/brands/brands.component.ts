@@ -5,7 +5,7 @@ import { GeneralBrands } from 'src/app/modals/brands';
 import { MobileServices } from 'src/app/services/mobile-services.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { GeneralPhones } from 'src/app/modals/phones';
-import * as CryptoJS from 'crypto-js';
+// import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-brands',
