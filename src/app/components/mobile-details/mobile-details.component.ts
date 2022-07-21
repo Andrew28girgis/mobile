@@ -16,16 +16,16 @@ export class MobileDetailsComponent implements OnInit {
   mobileId: number;
   GeneralPhones: GeneralPhones = new GeneralPhones();
   General: GeneralClients = new GeneralClients();
-  
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.mobileId = params['id'];
     })
 
     this.getphone(this.mobileId);
-    
+
     this.stringToColour("red");
-    
+
   }
   setActive(photoId: number) {
     this.GeneralPhones.phone.phonePhotoes.forEach(photo => {
@@ -36,7 +36,7 @@ export class MobileDetailsComponent implements OnInit {
     }
     )
   }
-  
+
   HomeProduct: any[] = [];
   HomeVariants: any[] = [];
   PhoneSizes: any[] = [];
@@ -153,7 +153,7 @@ export class MobileDetailsComponent implements OnInit {
     window.open(e.target.value, "_blank");
   }
 
-   stringToColour(str:any) {
+  stringToColour(str: any) {
     var hash = 0;
     for (var i = 0; i < str.length; i++) {
       hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -164,7 +164,7 @@ export class MobileDetailsComponent implements OnInit {
       colour += ('00' + value.toString(16)).substr(-2);
     }
     console.log(colour);
-    
+
     return colour;
 
   }

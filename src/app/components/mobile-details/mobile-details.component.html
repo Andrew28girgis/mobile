@@ -5,8 +5,9 @@
       <div class="col-12 col-md-6">
         <div class="single_product_desc">
           <h2 class="title">{{GeneralPhones?.phone?.title}}</h2>
-          <h6 class="price" style="font-weight: 300;margin-left: 2px; margin-bottom: 14px;">{{GeneralPhones?.phone?.storage }}</h6>
-          </div>
+          <h6 class="price" style="font-weight: 300;margin-left: 2px; margin-bottom: 14px;">
+            {{GeneralPhones?.phone?.storage }}</h6>
+        </div>
         <div class="single_product_thumb">
           <div id="product_details_slider" class="carousel slide" data-ride="carousel"
             style="height: 400px; display: flex; flex-direction: column;">
@@ -33,46 +34,86 @@
 
       <div class="col-12 col-md-6">
         <div class="single_product_desc">
-          <div class="padding-x-md padding-y-xl flex flex-center" style="    display: flex;
-          justify-content: space-between;">
-            <ng-container *ngFor="let size of PhoneSizes">
-            <div class="text-center">
-              <div class="margin-bottom-xs">
-                <button class="reset btn-gradient-1 " style="background-color: #fff;  padding: 3px;"  (click)="getColorsBySize(size);">{{size}}</button>
-              </div>
+          <h2 class="title" style="text-align: center;padding: 10px;">Cheapest Shop</h2>
 
-            </div>
-
-          </ng-container>
-
-          </div>
-          <div class="padding-x-md padding-y-xl flex flex-center" style="    display: flex;
+          <div style="    display: flex;
           justify-content: space-between; margin-top: 12px;">
-          <ng-container *ngFor="let color of ColorsSize">
-            <div class="text-center">
-              <div class="margin-bottom-xs">
-                <div style="width: 100px; height:50px ; display: flex ; justify-content: center;">
-                  <img src="../../../assets/images/iphone-finish-silver-2021.jpg" alt="" *ngIf="color=='Silver'" (click)="getPhonesByColorAndSize(color);">
-
-                 <img src="../../../assets/images/iphone-13-finish-green-202203.jpg" alt="" *ngIf="color=='Alpine Green'" (click)="getPhonesByColorAndSize(color);">
+            <ng-container *ngFor="let size of PhoneSizes">
+              <div class="text-center" style="border: 1px solid #d2d2d7;padding: 10px;border-radius: 12px; cursor: pointer;     width: 156px; height: 45px;
+                margin: 0 10px;" (click)="getColorsBySize(size);">
+                <div class="margin-bottom-xs">
+                  <label class="color-label">{{size}}</label>
                 </div>
-                <button class="reset btn-gradient-1 " style="  padding: 3px;" [ngStyle]="color == 'Alpine Green' && {'background-color': '#005c4c'} || null"
-                 (click)="getPhonesByColorAndSize(color);">
-                  {{color}}</button>
               </div>
+            </ng-container>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <ng-container *ngFor="let color of ColorsSize">
+                <div *ngIf="color!=null" class="padding-x-md padding-y-xl flex flex-center" style="    display: flex;
+              justify-content: space-between; margin-top: 12px;">
+                  <div class="text-center" style="border: 1px solid #d2d2d7;padding: 10px;border-radius: 12px; cursor: pointer;     width: 100px;
+                height: 73px;     margin: 0 10px;" (click)="getPhonesByColorAndSize(color);">
+                    <div class="margin-bottom-xs">
+                      <div style=" display: flex ; justify-content: center;">
+                        <img *ngIf="color=='Silver'" src="../../../assets/images/iphone-finish-silver-2021.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Alpine Green'"
+                          src="../../../assets/images/iphone-13-pro-finish-green-202203.jpg" class="color-img">
+                        <img *ngIf="color=='Green'" src="../../../assets/images/iphone-13-finish-green-202203.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Graphite'" src="../../../assets/images/iphone-finish-graphite-2021.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Gold'" src="../../../assets/images/iphone-finish-gold-2021.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Sierra Blue'" src="../../../assets/images/iphone-finish-blue-2021.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Blue'" src="../../../assets/images/iphone-13-finish-blue-202108.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Pacific Blue'" src="../../../assets/images/iphone-13-finish-blue-202108.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Red'" src="../../../assets/images/iphone-13-finish-product-red-202108.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Black'" src="../../../assets/images/finish-black-202010.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Midnight'" src="../../../assets/images/iphone-13-finish-midnight-202108.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Pink'" src="../../../assets/images/iphone-13-finish-pink-202108.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='PINK'" src="../../../assets/images/iphone-13-finish-pink-202108.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Starlight'"
+                          src="../../../assets/images/iphone-13-finish-starlight-202108.jpg" class="color-img">
+                        <img *ngIf="color=='White'" src="../../../assets/images/finish-white-202010.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='Purple'" src="../../../assets/images/finish-purple-202104.jpg"
+                          class="color-img">
+                        <img *ngIf="color=='N/A'" src="../../../assets/images/finish-white-202010.jpg"
+                          class="color-img">
 
+                      </div>
+                      <label *ngIf="color!=='N/A'" class="color-label">{{color}}</label>
+                      <label *ngIf="color=='N/A'" style="cursor:pointer;">Any</label>
+
+
+                    </div>
+
+                  </div>
+                </div>
+              </ng-container>
             </div>
-          </ng-container></div>
 
-          <div id="pricing" class="pricing-tables">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="item first-item" style="    padding: 25px 25px 20px 25px;">
-                  <!-- <h4>{{General.client?.title}}</h4> -->
+            <div [ngClass]="ColorsSize.length>0  ? 'col-9' : 'col-12'">
+              <div id="pricing" class="pricing-tables">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="item first-item"
+                      style="    padding: 25px 25px 20px 25px; margin: 15px;     height: 450px;">
+                      <!-- <h4>{{General.client?.title}}</h4> -->
 
-                  <img *ngIf="General.client?.title" style="    max-width: 150px;"
-                    src="http://194.135.33.234:8090/logos/{{General.client?.title}}.png" alt="">
-                  <div style="display: flex;     margin: 20px 0;">
+                      <img *ngIf="General.client?.title" style="    max-width: 150px;     margin-bottom: 15px;"
+                        src="http://194.135.33.234:8090/logos/{{General.client?.title}}.png" alt="">
+                      <!-- <div style="display: flex;     margin: 20px 0;">
                     <div class="col-3" style="display: flex;align-items: center; ">
                       <label class="container-checkbox">
                         <img src="../../../assets/images/5valu.png" alt="">
@@ -117,53 +158,57 @@
                           [ngClass]="General.client&&General.client.bankInstallments == '1'?'checkmark':'checkxmark'"></span>
                       </label>
                     </div>
-                  </div>
+                  </div> -->
 
 
-                  <div style="padding-top: 30px;border-top: 1px solid #eee;">
-                    <p style="font-size: 17px; font-weight: 600;color: #2a2a2a;">{{HomeProduct[0]?.title}}</p>
-                    <p *ngIf="winnerVariant" style="font-size: 15px;color: #7a7a7a;">
-                      {{winnerVariant.size}}
-                      <span *ngIf="winnerVariant&&winnerVariant.color"> , {{winnerVariant?.color}}</span>
-                    </p>
-                  </div>
+                      <div style="padding-top: 30px;border-top: 1px solid #eee;">
+                        <p style="font-size: 17px; font-weight: 600;color: #2a2a2a;">{{HomeProduct[0]?.title}}</p>
+                        <p *ngIf="winnerVariant" style="font-size: 15px;color: #7a7a7a;">
+                          {{winnerVariant.size}}
+                          <span *ngIf="winnerVariant&&winnerVariant.color"> , {{winnerVariant?.color}}</span>
+                        </p>
+                      </div>
 
 
 
-                  <span class="winner-price" style="    padding-block: 10px;
+                      <span class="winner-price" style="    padding-block: 10px;
                   border-bottom: 1px solid #ddd;">{{HomeProduct[0]?.price|number }}
-                    EGP</span>
+                        EGP</span>
 
 
-                  <div class="row" style="margin-top:30px">
+                      <div class="row" style="margin-top:30px">
 
 
-                    <div class="main-blue-button-hover">
-                      <a href="{{HomeProduct[0].link}}" target="_blank">View Deal</a>
-                    </div>
-                    <div style="margin-top: 10px;display: flex;justify-content: end;">
+                        <div class="main-blue-button-hover">
+                          <a href="{{HomeProduct[0]?.link}}" target="_blank">View Deal</a>
+                        </div>
+                        <!-- <div style="margin-top: 10px;display: flex;justify-content: end;">
 
-                      <select style="    border: none;
+                          <select style="    border: none;
                       width: 100px; cursor: pointer;font-size: 14px;font-weight: 500;
                       color: #323232;" (change)="routeTo($event)">
-                        <option class="cutomOption" hidden selected>{{AllPhones.length}} More </option>
+                            <option class="cutomOption" hidden selected>{{AllPhones.length}} More </option>
 
-                        <option class="cutomOption" *ngFor="let price of AllPhones" value="{{price.link}}"> EGB
-                          {{price.price|number}}
-                          {{price.website}} </option>
+                            <option class="cutomOption" *ngFor="let price of AllPhones" value="{{price.link}}"> EGB
+                              {{price.price|number}}
+                              {{price.website}} </option>
 
-                      </select>
+                          </select>
+                        </div> -->
+
+                      </div>
                     </div>
-
                   </div>
+
                 </div>
+                <!-- <p class="available">Available: <span class="text-muted">In Stock</span></p> -->
+
+
               </div>
-
             </div>
-            <!-- <p class="available">Available: <span class="text-muted">In Stock</span></p> -->
-
-
           </div>
+
+
         </div>
       </div>
       <div class="row ">

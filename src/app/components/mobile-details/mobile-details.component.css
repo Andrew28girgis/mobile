@@ -2145,23 +2145,13 @@ textarea:focus,
 button:focus {
   outline: none !important;
 }
-.btn-gradient-1 {
-  border-width: 2px;
-  border-style: solid;
-  border-image:  linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(22, 27, 43) 70.2%) 1;
+
+.color-img {
+  width: 25px;
+  height: 25px;
 }
 
-.btn-gradient-1 {
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--btn-font-size, 1em);
-  color: var(--color-contrast-medium);
-  padding: var(--space-xs) var(--space-md);
+.color-label {
   cursor: pointer;
-  transition: color 0.2s;
-}
-.btn-gradient-1:hover, .btn-gradient-2:hover {
-  color: var(--color-contrast-high);
+  font-size: 12px;
 }
