@@ -12,17 +12,18 @@
           <h2>We <em>Provide</em> The Best Service With <span>Our Clients</span></h2>
         </div>
       </div>
-      <div class="col-md-3" *ngFor="let client of General.clients">
-        <div class="our-services">
-          <div class="item">
-            <h4>{{client.title}}</h4>
-            <div class="icon" style="padding-bottom: 5px;"> <a href="{{client.site}}" target="_blank"
-                style="cursor: pointer;"> <img style="max-height:152px; max-width: 180px;"
-                  src="http://194.135.33.234:8090/logos/{{client.title}}.png" alt=""></a>
+      <div class="col-md-4" *ngFor="let client of General.clients">
+        <a href="{{client.Site}}" target="_blank" style="cursor: pointer;">
+          <div class="our-services">
+            <div class="item">
+              <h4>{{client.Title}}</h4>
+              <div class="icon" style="padding-bottom: 5px;">
+                <img style="max-height:40px; max-width: 150px;"
+                  src="http://194.135.33.234:8090/logos/{{client.Title}}.png" alt="">
+              </div>
             </div>
           </div>
-        </div>
-
+        </a>
       </div>
       <!-- <owl-carousel-o [options]="customOptions">
         <ng-container *ngFor="let client of General.clients">

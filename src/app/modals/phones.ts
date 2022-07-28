@@ -4,60 +4,60 @@ import { Injectable } from "@angular/core";
   providedIn: 'root'
 })
 
-export class GeneralPhones{
-  phones:Phones[];
-  phone:Phones;
+export class GeneralPhones {
+  phones: Phones[];
+  phone: Phones;
 }
-export class Phones{
-  id: number;
-  brandId: number;
-  title: string;
-  thumbnail: string;
-  releaseDate: string;
-  dimension: string;
-  os: string;
-  storage: string;
-  url: string;
-  displaySize: string;
-  resolution: string;
-  ram: string;
-  chipset: string;
-  batterySize: string;
-  batteryType:string;
-  photosUrl: string;
-  brand: string;
-  phonePhotoes: PhonePhotoes[];
-  phoneSpecs: any[];
-  lowestPrice: string;
-  price:string;
-  variants: Variants[];
+export class Phones {
+  Id: number;
+  BrandId: number;
+  Title: string;
+  Thumbnail: string;
+  ReleaseDate: string;
+  Dimension: string;
+  Os: string;
+  Storage: string;
+  Url: string;
+  DisplaySize: string;
+  Resolution: string;
+  Ram: string;
+  Chipset: string;
+  BatterySize: string;
+  BatteryType: string;
+  PhotosUrl: string;
+  Brand: string;
+  PhonePhotoes: PhonePhotoes[];
+  PhoneSpecs: any[];
+  LowestPrice: string;
+  Price: string;
+  Variants: Variants[];
 
 }
-export class PhonePhotoes{
-  id: number;
-  isActive: boolean;
-  phoneId: number;
-  photo: string;
+export class PhonePhotoes {
+  Id: number;
+  IsActive: boolean;
+  PhoneId: number;
+  Photo: string;
 }
-export class Variants{
- id: number;
- phoneId: number;
- size:any;
- color:string;
- allProducts: AllProducts [];
+export class Variants {
+  Id: number;
+  PhoneId: number;
+  Size: any;
+  Color: string;
+  AllProducts: AllProducts[];
 
 }
 
-export class AllProducts{
-    id: number;
-    title: string;
-    link : string;
-    website: string;
-    price: string;
-    lastUpdatedDate: string;
-    websiteId:  number;
-    variantId: number;
-    websiteNavigation: any;
+export class AllProducts {
+  Id: number;
+  Title: string;
+  Link: string;
+  Website: string;
+  Price: string;
+  LastUpdatedDate: string;
+  WebsiteId: number;
+  VariantId: number;
+  WebsiteNavigation: any;
 }
 
 

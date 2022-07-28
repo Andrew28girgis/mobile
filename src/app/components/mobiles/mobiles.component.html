@@ -14,15 +14,15 @@
       </div>
       <!-- [routerLink]="['/mobile/details' , phone.id]" -->
       <div class="col-md-3" *ngFor="let phone of generalPhones.phones" style="cursor: pointer;"
-      [routerLink]="['/mobile/details' , phone.id]" >
+      [routerLink]="['/mobile/details' , phone.Id]" >
         <div class="our-services">
           <div class="item" style="height: auto; padding: 18px;">
-            <h4 style="font-size:15px ;">{{phone.title}}</h4>
+            <h4 style="font-size:15px ;">{{phone.Title}}</h4>
             <div class="icon" style="padding-bottom: 5px;">
-              <img src="{{phone.thumbnail}}" alt="">
+              <img src="{{phone.Thumbnail}}" alt="">
             </div>
             <div>
-              <p style="color:#ff695f; font-weight: 600; padding-top: 10px;">Starting price : {{phone.price |number}} EG</p>
+              <p style="color:#ff695f; font-weight: 600; padding-top: 10px;">Starting price : {{phone.Price |number}} EG</p>
             </div>
           </div>
         </div>

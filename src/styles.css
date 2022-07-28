@@ -251,6 +251,19 @@ body {
   letter-spacing: 0.25px;
 }
 
+.blue-button a {
+  display: inline-block;
+  background-color: #03a4ed;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 9px 13px;
+  border-radius: 23px;
+  letter-spacing: 0.25px;
+  transition: all .3s;
+}
+
 .main-blue-button-hover a {
   display: inline-block;
   background-color: #03a4ed;
@@ -1075,14 +1088,27 @@ Services Style
 .our-services .item {
   text-align: center;
   margin: 15px;
-  height: 250px;
+  height: 150px;
   border-radius: 20px;
   background-color: #fff;
   padding: 30px;
   box-shadow: 0px 0px 15px #ecf0f1;
   transition: 0.3s ease-in-out;
 }
+.our-services .items {
+  text-align: center;
+  margin: 15px;
+  height: 150px;
+  border-radius: 20px;
 
+  padding: 30px;
+
+  transition: 0.3s ease-in-out;
+}
+
+.our-services .items:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 .our-services .item:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -1091,7 +1117,7 @@ Services Style
   font-size: 20px;
   font-weight: 700;
   color: #2a2a2a;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   line-height: 30px;
 }
 

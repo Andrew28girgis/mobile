@@ -1,4 +1,4 @@
-<div id="services" class="our-services section" style="padding:60px 0;">
+<div id="brands" class="our-services section" style="padding:60px 0;">
   <!-- <div class="services-right-dec">
     <img src="assets/images/services-right-dec.png" alt="">
   </div> -->
@@ -14,19 +14,30 @@
         </div>
       </div>
     </div>
-    <div class="row">
-  <owl-carousel-o [options]="customOptions">
-        <ng-container *ngFor="let brand of GeneralBrands.brands">
+    <div class="row" *ngIf="GeneralBrands.brands&&GeneralBrands.brands.length>0">
+      <!-- <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let brand of GeneralBrands.brands ">
           <ng-template carouselSlide>
-            <div class="item" style="padding: 0; height: auto; box-shadow: none; cursor: pointer;" [routerLink]="['/mobiles' ,brand.id]" >
-              <!-- <h4>{{brand.name}}</h4> -->
+            <div class="item" style="padding: 0; height: auto; box-shadow: none; cursor: pointer;" [routerLink]="['/mobiles' ,brand.Id]" >
               <div class="icon">
-                  <img src="http://194.135.33.234:8090/brands/{{brand.name}}.png" alt="">
+                  <img src="http://194.135.33.234:8090/brands/{{brand.Name}}.png" alt="">
               </div>
             </div>
           </ng-template>
         </ng-container>
-      </owl-carousel-o>
+      </owl-carousel-o> -->
+      <div class="col-md-4" *ngFor="let brand of GeneralBrands.brands ">
+        <a [routerLink]="['/mobiles' ,brand.Id]" style="cursor: pointer;">
+          <div class="our-services">
+            <div class="items">
+              <!-- <h4>{{client.Title}}</h4> -->
+              <div class="icon" style="padding-bottom: 5px;">
+                <img src="http://194.135.33.234:8090/brands/{{brand.Name}}.png" alt="">
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>

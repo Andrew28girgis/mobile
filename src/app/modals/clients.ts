@@ -10,23 +10,23 @@ export class GeneralClients{
 }
 
 export class Clients {
-  id: number;
-  site: string;
-  type: string;
-  status: string;
-  diff: string;
-  mapping: string;
-  phone: string;
-  branches: string;
-  andriod: string;
-  iphone: string;
-  onlineChat: string;
-  onlinePayment: string;
-  cashOnDelivery: string;
-  bankInstallments: string;
-  valu: string;
-  facebook: string;
-  instagram: string;
-  title: string;
-  allProducts: any[];
+  Id: number;
+  Site: string;
+  Type: string;
+  Status: string;
+  Diff: string;
+  Mapping: string;
+  Phone: string;
+  Branches: string;
+  Andriod: string;
+  Iphone: string;
+  OnlineChat: string;
+  OnlinePayment: string;
+  CashOnDelivery: string;
+  BankInstallments: string;
+  Valu: string;
+  Facebook: string;
+  Instagram: string;
+  Title: string;
+  AllProducts: any[];
 }

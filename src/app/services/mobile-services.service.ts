@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -15,23 +15,20 @@ export class MobileServices {
   }
 
   public getwebsites(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.api}/phones/getwebsites`).pipe();
+    return this.http.get<any[]>(`${environment.api}/phones/gw`).pipe();
   }
 
   public getworkingbrands(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.api}/phones/getworkingbrands`).pipe();
+    return this.http.get<any>(`${environment.api}/phones/gwb`).pipe();
   }
 
   public getworkingphones(brandid: number): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.api}/phones/getworkingphones?brandid=${brandid}`).pipe();
+    return this.http.get<any[]>(`${environment.api}/phones/gwp?brandid=${brandid}`).pipe();
   }
 
   public getphone(phoneid: number): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.api}/phones/getphone?phoneid=${phoneid}`).pipe();
+    return this.http.get<any[]>(`${environment.api}/phones/gp?phoneid=${phoneid}`).pipe();
   }
 
 
-  public getbrands(): any {
-    return this.http.get<any>(`${environment.api}/phones/getbrandsenc`, {responseType: 'text' as 'json'}).pipe();
-  }
 }

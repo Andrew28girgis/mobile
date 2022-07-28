@@ -9,9 +9,10 @@ export class GeneralBrands{
   brand:Brands;
 }
 
+
 export class Brands{
-  id: number;
-  name: string;
+  Id: number;
+  Name: string;
   brandPhones:any [];
   phones: any[];
 }

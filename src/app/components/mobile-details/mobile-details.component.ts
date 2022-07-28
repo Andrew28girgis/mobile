@@ -4,6 +4,7 @@ import { GeneralBrands } from 'src/app/modals/brands';
 import { GeneralClients } from 'src/app/modals/clients';
 import { AllProducts, GeneralPhones, Variants } from 'src/app/modals/phones';
 import { MobileServices } from 'src/app/services/mobile-services.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-mobile-details',
@@ -16,22 +17,29 @@ export class MobileDetailsComponent implements OnInit {
   mobileId: number;
   GeneralPhones: GeneralPhones = new GeneralPhones();
   General: GeneralClients = new GeneralClients();
-
+  x: number = 16;
+  mobile:boolean=false;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.mobileId = params['id'];
     })
 
     this.getphone(this.mobileId);
-
-    this.stringToColour("red");
-
+//  if (window.screen.width === 360) { // 768px portrait
+//     this.mobile = true;
+//   }
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // true for mobile device
+  // document.write("mobile device");
+  console.log("mobile device");
+this.mobile= true;
+}
   }
   setActive(photoId: number) {
-    this.GeneralPhones.phone.phonePhotoes.forEach(photo => {
-      photo.isActive = false;
-      if (photo.id == photoId) {
-        photo.isActive = true;
+    this.GeneralPhones.phone.PhonePhotoes.forEach(photo => {
+      photo.IsActive = false;
+      if (photo.Id == photoId) {
+        photo.IsActive = true;
       }
     }
     )
@@ -49,27 +57,26 @@ export class MobileDetailsComponent implements OnInit {
 
   getphone(phoneid: number) {
     this.MobileServices.getphone(phoneid).subscribe((data: any) => {
-      this.GeneralPhones.phone = data;
-      this.GeneralPhones.phone.variants.forEach(variant => {
-        if (variant.allProducts.length > 0) {
-          variant.allProducts.forEach(p => {
+      var response = this.RR(data.result);
+      this.GeneralPhones.phone = response;
+
+      this.GeneralPhones.phone.Variants.forEach(variant => {
+        if (variant.AllProducts.length > 0) {
+          variant.AllProducts.forEach(p => {
             this.AllPhones.push(p);
           })
         }
       })
 
-      this.lowestPhone = this.AllPhones.reduce((r, e) => r.price < e.price ? r : e);;
+      this.lowestPhone = this.AllPhones.reduce((r, e) => r.Price < e.Price ? r : e);;
 
+      this.GeneralPhones.phone.PhonePhotoes[0].IsActive = true;
 
-
-      this.GeneralPhones.phone.phonePhotoes[0].isActive = true;
-      this.GeneralPhones.phone.variants.forEach(variant => {
-        if (this.HomeProduct[0] == variant.id) {
+      this.GeneralPhones.phone.Variants.forEach(variant => {
+        if (this.HomeProduct[0] == variant.Id) {
           this.winnerVariant = variant;
         }
       })
-
-
 
       this.getAllClients();
       this.getUniqueSizes();
@@ -77,10 +84,12 @@ export class MobileDetailsComponent implements OnInit {
     })
   }
 
+
+
   getUniqueSizes() {
-    this.GeneralPhones.phone.variants.forEach(variant => {
-      if (!this.PhoneSizes.includes(variant.size)) {
-        this.PhoneSizes.push(variant.size);
+    this.GeneralPhones.phone.Variants.forEach(variant => {
+      if (!this.PhoneSizes.includes(variant.Size)) {
+        this.PhoneSizes.push(variant.Size);
       }
     });
   }
@@ -88,10 +97,10 @@ export class MobileDetailsComponent implements OnInit {
   getColorsBySize(Size: string) {
     this.ColorsSize = [];
     this.SelectedSize = Size;
-    this.GeneralPhones.phone.variants.forEach(variant => {
-      if (variant.size == this.SelectedSize) {
-        if (!this.ColorsSize.includes(variant.color)) {
-          this.ColorsSize.push(variant.color);
+    this.GeneralPhones.phone.Variants.forEach(variant => {
+      if (variant.Size == this.SelectedSize) {
+        if (!this.ColorsSize.includes(variant.Color)) {
+          this.ColorsSize.push(variant.Color);
         }
       }
     });
@@ -101,34 +110,31 @@ export class MobileDetailsComponent implements OnInit {
 
   getPhonesByColorAndSize(Color: string) {
     this.HomeProduct = [];
-    this.GeneralPhones.phone.variants.forEach(variant => {
+    // console.log(this.GeneralPhones.phone.Variants);
 
-      if (this.SelectedSize == "" || variant.size == this.SelectedSize) {
-        if (Color == "" || variant.color == Color) {
+    this.GeneralPhones.phone.Variants.forEach(variant => {
+      if (this.SelectedSize == "" || variant.Size == this.SelectedSize) {
+        if (Color == "" || variant.Color == Color) {
 
-          variant.allProducts.forEach(p => {
+          variant.AllProducts.forEach(p => {
             if (!this.HomeProduct.includes(p)) {
               this.HomeProduct.push(p);
             }
           })
-
-
-
         }
       }
-      this.HomeProduct.sort((a, b) => a.price > b.price ? 1 : -1);
+      this.HomeProduct.sort((a, b) => a.Price > b.Price ? 1 : -1);
     });
-    // console.log(`this.HomeProduct`);
-    // console.log(this.HomeProduct[0]);
-    this.GeneralPhones.phone.variants.forEach(variant => {
-      if (this.HomeProduct[0].variantId == variant.id) {
-        this.winnerVariant = variant;
 
+    this.GeneralPhones.phone.Variants.forEach(variant => {
+      if (this.HomeProduct[0]?.VariantId == variant.Id) {
+        this.winnerVariant = variant;
       }
     })
-    this.General.clients?.forEach((client) => {
 
-      if (client.id == this.HomeProduct[0].websiteId) {
+
+    this.General.clients?.forEach((client) => {
+      if (client.Id == this.HomeProduct[0].WebsiteId) {
         this.General.client = client;
 
       }
@@ -138,36 +144,44 @@ export class MobileDetailsComponent implements OnInit {
 
   }
   getAllClients() {
-    this.MobileServices.getwebsites().subscribe(data => {
-      this.General.clients = data;
+    this.MobileServices.getwebsites().subscribe((data: any) => {
+      var response = this.RR(data.result);
+      this.General.clients = response;
+
       this.General.clients.forEach((client) => {
-
-        if (client.id == this.lowestPhone.websiteId) {
+        if (client.Id == this.lowestPhone.WebsiteId) {
           this.General.client = client;
-
         }
       })
     });
   }
+
   routeTo(e: any) {
     window.open(e.target.value, "_blank");
   }
 
-  stringToColour(str: any) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    var colour = '#';
-    for (var i = 0; i < 3; i++) {
-      var value = (hash >> (i * 8)) & 0xFF;
-      colour += ('00' + value.toString(16)).substr(-2);
-    }
-    console.log(colour);
 
-    return colour;
 
+  active: any;
+  activeColor: any;
+
+  RR(r: any) {
+    var x = new TextEncoder();
+    var y: any = x.encode(r);
+    r = String.fromCharCode.apply(null, y);
+    var k = y.slice(0, this.x * 2);
+    var sk = String.fromCharCode.apply(null, k);
+    var i = y.slice(this.x * 2, this.x * 3);
+    var si = String.fromCharCode.apply(null, i);
+    r = y.slice(this.x * 3);
+    r = String.fromCharCode.apply(null, r);
+    //------------------------------------------------------------------------------------------
+    k = CryptoJS.enc.Utf8.parse(sk);
+    i = CryptoJS.enc.Utf8.parse(si);
+    var d = CryptoJS.AES.decrypt(r, k, { iv: i });
+    return JSON.parse(d.toString(CryptoJS.enc.Utf8));
   }
+
 }
 
 

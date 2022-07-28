@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: "http://194.135.33.234:8090/api",
+  api: "https://api.cheapwins.com/api",
 };
 
 /*
